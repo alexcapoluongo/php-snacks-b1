@@ -35,7 +35,6 @@ $matches = [
 </head>
 <body>
     <ul>
-
         <?php
         for ($i=0; $i < count($matches); $i++) {
             $single_match = $matches[$i];
