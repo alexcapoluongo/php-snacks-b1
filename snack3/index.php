@@ -9,12 +9,12 @@ $posts = [
         [
             'title' => 'Post 1',
             'author' => 'Michele Papagni',
-            'text' => 'Testo post 1'
+            'text' => 'Hey guys Im in New York now!'
         ],
         [
             'title' => 'Post 2',
-            'author' => 'Michele Papagni',
-            'text' => 'Testo post 2'
+            'author' => 'Joseph Johansson',
+            'text' => 'Hey yoo'
         ],
     ],
     '10/02/2019' => [
@@ -42,6 +42,8 @@ $posts = [
         ]
     ],
 ];
+
+$keys = array_keys($posts);
 ?>
 
 <!DOCTYPE html>
@@ -54,16 +56,25 @@ $posts = [
 </head>
 <body>
     <ul>
-        <?php for ($i = 0; $i < count($posts); $i++) {
-            $data_posts = $posts[$i];
+        <?php for ($i = 0; $i < count($keys); $i++) {
+            $key = $keys[$i]; //prendo le singole date e variabile keys prende i post all'interno di ogni data 
+            $array = $posts[$key]; //variabile = array[con indice le date, perche le key non hano numeri in questo caso ma come nome le date], dopo le andro a scorrere una data alla vota creando una variabile che andrà a prender un signolo post
         ?>
             <li>
-                <h4>Data: <?php echo $data_posts; ?> </h4>
+                <h4>Data: <?php echo $key; ?> </h4>
+                <ul>
+                    <?php for($j=0; $j < count($array); $j++) {
+                        $single_post = $array[$j];
+                        ?>
+                        <li> <?php echo $single_post['title']?> </li>
+                        <li> <?php echo $single_post['author']?> </li>
+                        <li> <?php echo $single_post['text']?> </li> <br>
+                    <?php }
+                    ?>
+                </ul>
             </li>
         <?php } 
-        ?>
-
-        
+        ?>    
     </ul>
 </body>
 </html>
